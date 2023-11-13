@@ -7,7 +7,7 @@
 
 #define WIDTH 50
 #define HEIGHT 25
-
+//
 using namespace std;
 
 Snake snake({WIDTH/2, HEIGHT/2}, 1);
@@ -22,9 +22,9 @@ void board()
 
     vector<COORD> snake_body = snake.get_body();
 
-    cout << "SCORE : " << score << "\n\n";
+    cout << "SCORE : " << score << "\n\n"; //shows score counter
 
-    for(int i = 0; i < HEIGHT; i++)
+    for(int i = 0; i < HEIGHT; i++) //checks if snake collided its tail
     {
         cout << "\t\t#";
         for(int j = 0; j < WIDTH - 2; j++)
@@ -56,14 +56,14 @@ void board()
 
 int main()
 {
-    score = 0;
+    score = 0; //score counter
     srand(time(NULL));
 
-    food.gen_food();
+    food.gen_food(); //food generation
 
-    char game_over = false;
+    char game_over = false; 
 
-    while(!game_over)
+    while(!game_over) //snake movement on wasd
     {
         board();
 
@@ -78,9 +78,9 @@ int main()
             }
         }
 
-        if(snake.collided()) game_over = true;
+        if(snake.collided()) game_over = true; //gane ends when snake collides with tail
 
-        if(snake.eaten(food.get_pos()))
+        if(snake.eaten(food.get_pos())) //when snake eats she grows and gets scores
         {
             food.gen_food();
             snake.grow();
